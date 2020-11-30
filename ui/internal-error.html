@@ -1,0 +1,46 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <title>WyliodrinSupervisor</title>
+  <!-- Bootstrap core CSS -->
+  <link href="../assets/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="icon" type="image/png" sizes="96x96" href="/assets/brand/ws-fav.png">
+
+  <!-- Custom styles for this template -->
+  <link href="/assets/css/error.css" rel="stylesheet">
+</head>
+
+<body class="text-center">
+  <div id="error" action="/wyliodrin/infos" method="POST">
+    <img class="mb-4" src="../assets/brand/ws-logo.png" alt="" width="100" height="100">
+    <h1 class="h3 mb-3 font-weight-normal">WyliodrinSupervisor Internal Error(HTTP Code: 500)</h1>
+    <div class="alert alert-danger" role="alert" id="errMsj"/>
+  </div>
+  <script>
+    function generateTimeText(secondsLeft) {
+      let time = secondsLeft;
+      if (secondsLeft !== 1) {
+        time += ' seconds';
+      } else {
+        time += ' second';
+      }
+
+      return time;
+    }
+
+    let secondsLeft = 5;
+    document.getElementById('errMsj').innerHTML = `There was a problem on the server side. Please try again to upload your config.</br> We will redirect you to main page in ${generateTimeText(secondsLeft)} ...`;
+    setInterval(()=> {      
+      secondsLeft--;
+      document.getElementById('errMsj').innerHTML = `There was a problem on the server side. Please try again to upload your config.</br> We will redirect you to main page in ${generateTimeText(secondsLeft)} ...`;
+    }, 1000)
+    setTimeout(() => {
+      window.location.replace("/");
+    }, 5000);
+  </script>
+</body>
+
+</html>

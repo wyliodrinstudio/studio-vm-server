@@ -1,0 +1,9 @@
+PM2 is used as daemon for NodeJS server
+All pm2 commands must run as root, because server need root privileges in order
+to run poweroff and reboot commands.
+
+PM2 commands:
+    -> sudo pm2 ls -> list all active scripts
+    -> sudo pm2 restart all -> restarts all scripts
+    -> sudo pm2 restart [script_name] -> restart specific scripts
+    -> sudo pm2 monit -> scripts logs
