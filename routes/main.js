@@ -48,7 +48,7 @@ router.post('/wyliodrin/infos', async (req, res) => {
                 if (stderr !== '') {
                     res.redirect('/internal-error');
                 } else {
-                    res.redirect('/');
+                    res.redirect('/success');
                 }
             } else {
                 res.redirect('/bad-request');
@@ -70,6 +70,10 @@ router.get('/bad-request', (req, res) => {
 
 router.get('/internal-error', (req, res) => {
     res.sendFile(path.join(__dirname, '..', 'ui', 'internal-error.html'));
+})
+
+router.get('/success', (req, res) => {
+    res.sendFile(path.join(__dirname, '..', 'ui', 'success.html'));
 })
 
 module.exports = router;
